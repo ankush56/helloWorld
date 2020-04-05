@@ -30,7 +30,7 @@ pipeline
           {
               withCredentials([usernamePassword(credentialsId: 'aw1234', passwordVariable: 'pass1', usernameVariable: 'user1')]) {
               sh """
-                sshpass -p $pass1 scp -P 22 $WORKSPACE/target/myweb.jar aw@138.91.160.89:~/tmp
+                sshpass -p $pass1 scp -P 22 $WORKSPACE/target/myweb.jar aw@138.91.160.89:~/
                 sshpass -p $pass1 ssh $user1@138.91.160.89 '
                 echo $pass1 | sudo -kS mv ~/tmp/*.jar /opt/tomcat/webapps
                 echo $pass1 | sudo -kS /opt/tomcat/bin/shutdown.sh
