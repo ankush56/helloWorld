@@ -34,7 +34,7 @@ pipeline
                 sshpass -p $pass1 ssh $user1@138.91.160.89 '
                 echo $pass1 | sudo -kS mv ~/tmp/*.jar /opt/tomcat/webapps
                 echo $pass1 | sudo -kS /opt/tomcat/bin/shutdown.sh
-                echo $pass1 | sudo -kS /opt/tomcat/bin/shutdown.sh
+                echo $pass1 | sudo -kS /opt/tomcat/bin/startup.sh
                 '
               """ 
               }
