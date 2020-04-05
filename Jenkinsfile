@@ -31,7 +31,7 @@ pipeline
               sshagent(['awkey']) {
     // some block
               sh """
-                scp -o StrictHostKeyChecking=no $WORKSPACE/target/myweb.jar aw@138.91.160.89:/opt/tomcat/webapps/
+                scp -o $WORKSPACE/target/myweb.jar aw@138.91.160.89:/opt/tomcat/webapps/
                 ssh aw@138.91.160.89 /opt/tomcat/shutdown.sh
                 ssh aw@138.91.160.89 /opt/tomcat/startup.sh
               """
