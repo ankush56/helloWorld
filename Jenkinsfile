@@ -1,3 +1,4 @@
+currentBuild.displayName="SimpleGreeting#"+ curentBuild.number
 pipeline
 {
     agent any
