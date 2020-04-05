@@ -28,7 +28,7 @@ pipeline
         {
           steps
           {
-              sshagent(['30c18024-4671-4c1d-9658-53204ae59dba']) {
+              sshagent(['new']) {
                 // some block
                   sh """
                     scp -o StrictHostKeyChecking=no $WORKSPACE/target/myweb.war aw@138.91.160.89:/opt/tomcat/webapps/
