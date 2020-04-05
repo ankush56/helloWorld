@@ -28,11 +28,10 @@ pipeline
         {
           steps
           {
-              sshagent(['aw'])
-               {
+              sshagent(['30c18024-4671-4c1d-9658-53204ae59dba']) {
                 // some block
                   sh """
-                    scp -o StrictHostKeyChecking=no /target/myweb.war aw@138.91.160.89:/opt/tomcat/webapps/
+                    scp -o StrictHostKeyChecking=no $WORKSPACE/target/myweb.war aw@138.91.160.89:/opt/tomcat/webapps/
                     ssh aw@138.91.160.89 /opt/tomcat/shutdown.sh
                     ssh aw@138.91.160.89 /opt/tomcat/startup.sh
                   """
