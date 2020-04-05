@@ -21,7 +21,7 @@ pipeline
           {
             echo "Maven Build now"
             sh "mvn clean package" 
-            sh "mv $WORKSPACE/Test/target/*.jar $WORKSPACE/Test/target/myweb.jar"
+            sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
           }
         }
         stage('Deploy')
