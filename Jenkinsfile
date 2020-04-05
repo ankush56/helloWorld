@@ -1,5 +1,4 @@
-currentBuild.displayName = "SimpleGreeting#"+currentBuild.number
-
+currentBuild.displayName = currentBuild.number+"helloWorld"
 pipeline
 {
     agent any
@@ -21,12 +20,9 @@ pipeline
         {
           steps
           {
-            
-                echo "Maven Build now"
-                sh "mvn clean package"
-                sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
-              }
-            
+            echo "Maven Build now"
+            sh "mvn clean package"
+            sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
           }
         }
         stage('Deploy')
