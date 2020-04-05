@@ -3,10 +3,10 @@ currentBuild.displayName = "SimpleGreeting#"+currentBuild.number
 pipeline
 {
     agent any
-    environment
-    {
-      PATH = "/usr/share/maven:$PATH"
-    }
+   // environment
+   // {
+    //  PATH = "/usr/share/maven:$PATH"
+   // }
     stages
       {
         stage ('Git check')
@@ -21,9 +21,13 @@ pipeline
         {
           steps
           {
-            echo "Maven Build now"
-            sh "mvn clean package"
-            sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
+            withEnv(['PATH="/usr/share/maven:$PATH"']) 
+              {
+                echo "Maven Build now"
+                sh "mvn clean package"
+                sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
+              }
+            
           }
         }
         stage('Deploy')
