@@ -30,8 +30,8 @@ pipeline
           {
               withCredentials([usernamePassword(credentialsId: 'aw1234', passwordVariable: 'pass1', usernameVariable: 'user1')]) {
               sh """
-                sshpass -p $pass1 ssh $user1@138.91.160.89 /opt/tomcat/shutdown.sh
-                sshpass -p $pass1 ssh $user1@138.91.160.89 /opt/tomcat/startup.sh
+                sshpass -p $pass1 ssh $user1@138.91.160.89 /opt/tomcat/bin/shutdown.sh
+                sshpass -p $pass1 ssh $user1@138.91.160.89 /opt/tomcat/bin/startup.sh
               """ 
               }
           }
