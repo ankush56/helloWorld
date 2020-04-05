@@ -17,24 +17,24 @@ pipeline
         }
         stage ('Maven Build')
         {
-          steps 
+          steps
           {
             echo "Maven Build now"
-            sh "mvn clean package" 
-            sh "mv $WORKSPACE/target/*.jar $WORKSPACE/target/myweb.jar"
+            sh "mvn clean package"
+            sh "mv /target/*.war /target/myweb.war"
           }
         }
         stage('Deploy')
         {
           steps
           {
-              sshagent(['new']) {
-                // some block
-                  sh """
-                    scp -o StrictHostKeyChecking=no $WORKSPACE/target/myweb.war aw@138.91.160.89:/opt/tomcat/webapps/
-                    ssh aw@138.91.160.89 /opt/tomcat/shutdown.sh
-                    ssh aw@138.91.160.89 /opt/tomcat/startup.sh
-                  """
+              withCredentials([usernamePassword(credentialsId: 'aw', passwordVariable: 'pass1', usernameVariable: 'user1')])
+              {
+              sh """
+                scp -o StrictHostKeyChecking=no /target/myweb.war aw@138.91.160.89:/opt/tomcat/webapps/
+                ssh aw@138.91.160.89 /opt/tomcat/shutdown.sh
+                ssh aw@138.91.160.89 /opt/tomcat/startup.sh
+              """
               }
           }
         }
