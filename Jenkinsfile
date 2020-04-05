@@ -1,4 +1,4 @@
-currentBuild.displayName = currentBuild.number+"helloWorld"
+currentBuild.displayName = "SimpleGreeting#"+currentBuild.number
 
 pipeline
 {
