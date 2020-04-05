@@ -28,7 +28,7 @@ pipeline
         {
           steps
           {
-              sshagent(['d1f60b10-5e80-4ca7-b4e4-331ae6a51a3b'])
+              sshagent(['aw'])
                {
                 // some block
                   sh """
