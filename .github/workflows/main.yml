@@ -47,8 +47,8 @@ jobs:
       
       - name: Running multiple runs in 1 step
         run: |
-          echo "Running two commands ${{ pwd }}" 
-          echo "This is second command printing run id ${{ github.run_id }}"
+          echo "Running first command" 
+          echo "This is second command, printing run id ${{ github.run_id }}"
 
       - name: "Print Job Status"
         run: echo " ${{ job.status }}"
