@@ -32,6 +32,6 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Workspace details
-        run:  ${{ github.workspace }}
+        run:  echo '${{ github.workspace }}'
       
 
