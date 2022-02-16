@@ -21,8 +21,12 @@ jobs:
     # Job without name, 
       - name: "Say Hello"
         run: echo "Hello Action"
+    
+    # No name Job
+      - run: echo "Hello from no name job"
 
       - name: "Repository Info"
-        run: echo "This event is triggered from-  ${{github.repo}} repository"
+        run: echo "This event is triggered from-  ${{ github.repository }} repository"
+        run: echo "The name of branch is ${{github.ref}}"
       
 
