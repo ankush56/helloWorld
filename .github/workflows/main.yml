@@ -22,8 +22,7 @@ jobs:
       - name: "Say Hello step"
         run: echo "Hello Action"
     
-      #- name: "Repository Info"
-        #run: echo "This event is triggered from-  ${{ github.repository }} repository"
-        #run: echo "The name of branch is ${{ github.ref }}"
+      - name: "Repository Info"
+        run: echo "This event is triggered from-  ${{ github.repository }} repository"
       
 
