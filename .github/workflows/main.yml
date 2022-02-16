@@ -20,9 +20,9 @@ jobs:
     steps:
     # Job without name, 
       - name: "Say Hello"
-      - run: echo "Hello Action"
+        run: echo "Hello Action"
 
       - name: "Repository Info"
-      - run: echo "This event is triggered from-  ${{github.repo}} repository"
+        run: echo "This event is triggered from-  ${{github.repo}} repository"
       
 
