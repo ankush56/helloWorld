@@ -1,9 +1,7 @@
 name: Test Actions Workflow
-on: 
-  on:
-  pull_request:
+on:
+  push:
     branches: [master]
-  [workflow_dispatch]
 
 jobs:
   JOB1-scripts:
