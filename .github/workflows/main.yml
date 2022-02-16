@@ -34,6 +34,11 @@ jobs:
       - name: Workspace details
         run:  echo '${{ github.workspace }}'
 
+      - name: List files in workspace
+        run: ls ${{ github.workspace }}
+
+      - run : echo "current working directory is {{ pwd }}"    
+
       - name: "Print Job Status"
         run: echo " ${{ job.status }}"
       
