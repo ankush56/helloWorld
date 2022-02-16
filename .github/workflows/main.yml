@@ -33,5 +33,8 @@ jobs:
       
       - name: Workspace details
         run:  echo '${{ github.workspace }}'
+
+      - name: "Print Job Status"
+        run: echo " ${{ job.status }}"
       
 
