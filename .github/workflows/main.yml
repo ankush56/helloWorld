@@ -24,9 +24,14 @@ jobs:
       - name: "Repository Info"
         run: echo "This event is triggered from-  ${{ github.repository }} repository"
 # If you dont specify name, it will show command as name
-      - run: echo "The branch is  ${{ github.ref }} "
+      - run: echo "The branch is  ${{ github.ref_name }} "
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "Repo Url- ${{ github.repositoryUrl }} ."
+      - run: echo "Commit SHA ${{ github.sha }} ."
+
+      - name: Job Info
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "Job# {{ github.job }}"
 
       - name: Check out repository code
         uses: actions/checkout@v2
