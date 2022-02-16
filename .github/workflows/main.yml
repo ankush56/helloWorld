@@ -18,7 +18,11 @@ jobs:
   JOB1-RunScripts:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/checkout@v2
+    # Job without name, 
+      - name: "Say Hello"
       - run: echo "Hello Action"
+
+      - name: "Repository Info"
+      - run: echo "This event is triggered from-  ${{github.repo}} repository"
+      
 
