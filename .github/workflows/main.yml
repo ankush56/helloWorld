@@ -33,8 +33,6 @@ jobs:
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "Workflow Job ID# ${{ github.job }}"
 
-      - run: echo "Running two commands ${{ pwd }}" && echo "This is second command printing run id ${{ github.run_id }}"
-
       - name: Check out repository code
         uses: actions/checkout@v2
       
@@ -46,6 +44,11 @@ jobs:
     
       - name: Print current directory
         run : pwd  
+      
+      - name: Running multiple runs in 1 step
+      - run: |
+          echo "Running two commands ${{ pwd }}" 
+          echo "This is second command printing run id ${{ github.run_id }}"
 
       - name: "Print Job Status"
         run: echo " ${{ job.status }}"
