@@ -25,11 +25,4 @@ jobs:
       JOB1-RunScripts:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - uses: actions/checkout@v2
-      # Runs a single command using the runners shell
-        - name: Run a one-line script
-          run: echo "Hello Actions"
-      
-      # Job without name
-        - run: echo "Hello Actions2"
-        - run: echo "This action is ran from - ${{github.repo}} repository"
 
