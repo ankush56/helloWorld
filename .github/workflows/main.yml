@@ -18,12 +18,14 @@ jobs:
   JOB1-RunScripts:
     runs-on: ubuntu-latest
     steps:
-    # Job without name, 
       - name: "Say Hello step"
         run: echo "Hello Action"
     
       - name: "Repository Info"
         run: echo "This event is triggered from-  ${{ github.repository }} repository"
+# If you dont specify name, it will show command as name
       - run: echo "The branch is  ${{ github.ref }} "
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       
 
