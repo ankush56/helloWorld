@@ -38,7 +38,7 @@ jobs:
         run: ls ${{ github.workspace }}
     
       - name: Print current directory
-      - run : pwd   
+      - run : ls   
 
       - name: "Print Job Status"
         run: echo " ${{ job.status }}"
