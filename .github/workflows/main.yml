@@ -31,7 +31,9 @@ jobs:
 
       - run: echo "printing job info"
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "Job# {{ github.job }}"
+      - run: echo "Job ID# ${{ github.job }}"
+
+      - run: echo "Running two commands $ {{ pwd }}" && echo "This is second command"
 
       - name: Check out repository code
         uses: actions/checkout@v2
