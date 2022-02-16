@@ -24,6 +24,6 @@ jobs:
     
       - name: "Repository Info"
         run: echo "This event is triggered from-  ${{ github.repository }} repository"
-        run: echo "The branch is  ${{ github.ref }} "
+      - run: echo "The branch is  ${{ github.ref }} "
       
 
