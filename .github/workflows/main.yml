@@ -46,7 +46,7 @@ jobs:
         run : pwd  
       
       - name: Running multiple runs in 1 step
-      - run: |
+        run: |
           echo "Running two commands ${{ pwd }}" 
           echo "This is second command printing run id ${{ github.run_id }}"
 
