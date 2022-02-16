@@ -28,5 +28,5 @@ jobs:
       - name: Run a one-line script
         run: echo "Hello Actions"
       
-      -run: echo "Hello Actions2"
+      - run: echo "Hello Actions2"
 
