@@ -23,6 +23,7 @@ jobs:
     environment: 
       name: DEV
       url: ${{ env.DEV_URL }}
+      zone: zone1
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,7 +32,7 @@ jobs:
         run: echo "Deployment to ${{ env.DEV_URL }} "
       
       - name: Step that uses the DEV config
-        run: echo "Config for ${{ environment.name }} is ${{ env.DEV_CONFIG }} "
+        run: echo "Config is ${{ env.DEV_CONFIG }} "
 
   PROD:
     runs-on: ubuntu-latest
@@ -40,6 +41,7 @@ jobs:
     environment: 
       name: PROD
       url: ${{ env.PROD_URL }}
+      zone: zone2
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -48,5 +50,5 @@ jobs:
         run: echo "Deployment to ${{ env.PROD_URL }} "
       
       - name: Step that uses the PROD config
-        run: echo "Config for ${{ environment.name }} is ${{ env.PROD_CONFIG }} "
+        run: echo "Config is ${{ env.PROD_CONFIG }} "
           
