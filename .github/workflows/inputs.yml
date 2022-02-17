@@ -21,7 +21,8 @@ jobs:
   JOB1_PRINT_INPUTS:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-        echo "Log Level : ${{ github.event.inputs.logLevel }}"
+      -name: Print Inputs
+       run: |
+        echo "Log Level: ${{ github.event.inputs.logLevel }}"
         echo "Tag version: ${{ github.event.inputs.tags }}"
         
