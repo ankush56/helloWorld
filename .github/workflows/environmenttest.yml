@@ -36,7 +36,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
-    needs: DEV
+    needs: job1
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
     environment: 
