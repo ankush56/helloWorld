@@ -23,6 +23,6 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo "Log Level- ${{ github.event.inputs.logLevel }}"
+          echo "Log Level- ${{ github.event.inputs.logLevel.required }}"
           echo "Config- ${{ github.event.inputs.configVersion }}"
         
