@@ -7,6 +7,12 @@ on:
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
+  workflow_call:
+    inputs:
+      env: 
+        required: true
+        default: DEV
+        description: 'Environment'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -26,6 +32,7 @@ jobs:
       - name: Print Inputs
         run: |
           echo "Log Level- ${{ github.event.inputs.logLevel }}"
+          echo "Log Level- ${{ github.event.inputs.env }}"
           echo "Hello- ${{ github.event.inputs.name }}"
       - name: sayHello
         uses: actions/hello-world-javascript-action@v1
