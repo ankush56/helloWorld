@@ -1,4 +1,4 @@
-name: CI
+name: Test Inputs
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -21,8 +21,8 @@ jobs:
   JOB1_PRINT_INPUTS:
     runs-on: ubuntu-latest
     steps:
-      -name: Print Inputs
-       run: |
+      - name: Print Inputs
+        run: |
         echo "Log Level: ${{ github.event.inputs.logLevel }}"
         echo "Tag version: ${{ github.event.inputs.tags }}"
         
