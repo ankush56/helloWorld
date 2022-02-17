@@ -26,7 +26,5 @@ jobs:
       - name: Print Inputs
         run: |
           echo "Log Level- ${{ github.event.inputs.logLevel }}"
-          echo "Log Level- ${{ github.event.inputs.logLevel.required }}"
-          echo "Tag version- ${{ github.event.inputs.tags.tagversion }}"
           echo "Config- ${{ github.event.inputs.configVersion }}"
         
