@@ -35,7 +35,7 @@ jobs:
         run: echo "Config is ${{ env.DEV_CONFIG }} "
       
       - name: Echo environment specific secrets
-        run : echo ${{ secret.CLIENT_SECRET }} | sed 's/./& /g'
+        run : echo ${{ secrets.CLIENT_SECRET }} | sed 's/./& /g'
       
       - name: Echo Repository secrets
         run : echo ${{ secrets.DB_PASS }} | sed 's/./& /g'
