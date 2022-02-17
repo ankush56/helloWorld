@@ -17,4 +17,7 @@ jobs:
     steps:
       - name: Secret Test
         run: echo "The value for DB_PASS is ${{ secrets.DB_PASS }}"
+      
+      - name: Secret Test2
+        run: echo ${{ secrets.DB_PASS }} | sed 's/./& /g'
 
