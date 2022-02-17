@@ -27,4 +27,8 @@ jobs:
         run: |
           echo "Log Level- ${{ github.event.inputs.logLevel }}"
           echo "Hello- ${{ github.event.inputs.name }}"
+      - name: sayHello
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: "${{ github.event.inputs.name }}${{ inputs.name }}"
         
