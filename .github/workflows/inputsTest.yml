@@ -23,6 +23,6 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-        echo "Log Level: ${{ github.event.inputs.logLevel }}"
-        echo "Tag version: ${{ github.event.inputs.tags }}"
+          echo "Log Level ${{ github.event.inputs.logLevel }}"
+          echo "Tag version: ${{ github.event.inputs.tags }}"
         
