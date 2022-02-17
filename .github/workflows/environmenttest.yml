@@ -1,4 +1,4 @@
-name: Environments and Secrets
+name: Environments Test
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -36,6 +36,7 @@ jobs:
 
   PROD:
     runs-on: ubuntu-latest
+    needs: DEV
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
     environment: 
