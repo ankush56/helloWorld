@@ -11,28 +11,28 @@ on:
 
 
 jobs:
-  job1:
+  initial:
     runs-on: ubuntu-latest
     steps:
       - run : echo "This will run first"
   job2:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: initial
     steps:
-      - run : echo "This will run after job1"
+      - run : echo "This will run after intial job finishes"
   job3:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: initial
     steps:
-      - run : echo "This will run in parallel with job1"
-  job3:
-    runs-on: ubuntu-latest
-    needs: [job1, job1]
-    steps:
-      - run : echo "This will run after job1 and in parallel to job2"
+      - run : echo "This will run after intial and in parallel with job2"
   job4:
     runs-on: ubuntu-latest
-    needs: [job1, job2]
+    needs: [initial, job2]
     steps:
-      - run : echo "This will run after job1 and job2 have finished"
+      - run : echo "This will run after intial and in parallel to job3"
+  job5:
+    runs-on: ubuntu-latest
+    needs: [job2, job3]
+    steps:
+      - run : echo "This will run after job2 and job3 have finished"
   
