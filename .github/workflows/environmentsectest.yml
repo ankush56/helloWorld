@@ -12,6 +12,8 @@ on:
 env:
   DEV_URL: "https://docs.github.com/en/developers"
   PROD_URL: "https://docs.github.com/"
+  DEV_CONFIG: "abcsnapshot"
+  PROD_CONFIG: "abcrelease"
 
 jobs:
   DEV:
@@ -27,6 +29,9 @@ jobs:
       
       - name: Step that uses the DEV environment
         run: echo "Deployment to ${{ env.DEV_URL }} "
+      
+      - name: Step that uses the DEV config
+        run: echo "Config is ${{ env.DEV_CONFIG }} "
 
   PROD:
     runs-on: ubuntu-latest
@@ -41,4 +46,7 @@ jobs:
       
       - name: Step that uses the PROD environment
         run: echo "Deployment to ${{ env.PROD_URL }} "
+      
+      - name: Step that uses the DEV environment
+         run: echo "Config is ${{ env.PROD_CONFIG }} "
           
