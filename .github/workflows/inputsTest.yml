@@ -9,9 +9,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_call:
     inputs:
-      env: 
+      name: 
         required: true
-        default: DEV
         type: string
   workflow_dispatch:
     inputs:
