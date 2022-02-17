@@ -22,7 +22,12 @@ jobs:
       name: DEV
       url: ${{ env.DEV_URL }}
     steps:
-      - run: echo "Creating DEV environment if not there"  
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Step that uses the DEV environment
+        run: echo "Deployment to ${{ env.DEV_URL }} "
+
   PROD:
     runs-on: ubuntu-latest
     # An environment can be specified per job
@@ -31,4 +36,9 @@ jobs:
       name: PROD
       url: ${{ env.PROD_URL }}
     steps:
-      - run: echo "Creating PROD environment if not there"  
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Step that uses the PROD environment
+        run: echo "Deployment to ${{ env.PROD_URL }} "
+          
