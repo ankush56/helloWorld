@@ -14,6 +14,8 @@ env:
   PROD_URL: "https://docs.github.com/"
   DEV_CONFIG: "abcsnapshot"
   PROD_CONFIG: "abcrelease"
+  DEV_ZONE: "Green"
+  PROD_ZONE: "Yellow"
 
 jobs:
   DEV:
@@ -23,7 +25,7 @@ jobs:
     environment: 
       name: DEV
       url: ${{ env.DEV_URL }}
-      zone: zone1
+      zone: ${{ env.DEV_ZONE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -41,7 +43,7 @@ jobs:
     environment: 
       name: PROD
       url: ${{ env.PROD_URL }}
-      zone: zone2
+      zone: ${{ env.PROD_ZONE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
