@@ -11,11 +11,12 @@ on:
     inputs:
       logLevel:
         description: 'Log Level'
-        required: true
+        required: false
         default: 'warning'
-      tags:
-        tagversion: v1
-      config: 'dev'
+      name:
+        description: 'what is your name'
+        required: false
+        default: 'Superman'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,5 +26,5 @@ jobs:
       - name: Print Inputs
         run: |
           echo "Log Level- ${{ github.event.inputs.logLevel }}"
-          echo "Config- ${{ github.event.inputs.config }}"
+          echo "Hello- ${{ github.event.inputs.name }}"
         
