@@ -33,6 +33,7 @@ jobs:
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "Workflow Job ID# ${{ github.job }}"
 
+#Check out your repo under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out repository code
         uses: actions/checkout@v2
       
