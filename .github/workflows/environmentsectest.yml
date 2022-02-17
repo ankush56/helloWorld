@@ -11,9 +11,10 @@ on:
 
 env:
   DEV_URL: "https://docs.github.com/en/developers"
+  PROD_URL: "https://docs.github.com/"
 
 jobs:
-  job1:
+  DEV:
     runs-on: ubuntu-latest
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
@@ -22,3 +23,12 @@ jobs:
       url: ${{ env.DEV_URL }}
     steps:
       - run: echo "Creating DEV environment if not there"  
+  PROD:
+    runs-on: ubuntu-latest
+    # An environment can be specified per job
+    # If the environment cannot be found, it will be created
+    environment: 
+      name: PROD
+      url: ${{ env.PROD_URL }}
+    steps:
+      - run: echo "Creating PROD environment if not there"  
