@@ -10,13 +10,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  DEV:
+  job1:
     runs-on: ubuntu-latest
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
-    environment: 
-      name: DEV
-      url: ${{ env.DEV_URL }}
     steps:
       - name: Secret Test
         run: "The value for DB_PASS is ${{ secrets.DB_PASS }}"
