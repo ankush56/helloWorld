@@ -1,10 +1,10 @@
 name: SecTest
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,9 +15,10 @@ jobs:
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
     steps:
+    # Repository secret
       - name: Secret Test
         run: echo "The value for DB_PASS is ${{ secrets.DB_PASS }}"
-      
+    # Repository secret in logs
       - name: Secret Test2
         run: echo ${{ secrets.DB_PASS }} | sed 's/./& /g'
 
