@@ -15,6 +15,7 @@ on:
         default: 'warning'
       tags:
         tagversion: v1
+      config: 'dev'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,6 +24,6 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo "Log Level- ${{ github.event.inputs.logLevel.required }}"
-          echo "Config- ${{ github.event.inputs.configVersion }}"
+          echo "Log Level- ${{ github.event.inputs.logLevel }}"
+          echo "Config- ${{ github.event.inputs.config }}"
         
