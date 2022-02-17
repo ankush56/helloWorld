@@ -16,3 +16,5 @@ jobs:
     # If the environment cannot be found, it will be created
     environment: 
       name: DEV
+    steps:
+      - run: echo "Creating DEV environment if not there"  
