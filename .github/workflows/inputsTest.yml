@@ -12,7 +12,7 @@ on:
       env: 
         required: true
         default: DEV
-        description: 'Environment'
+        type: string
   workflow_dispatch:
     inputs:
       logLevel:
