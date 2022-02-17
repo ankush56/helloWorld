@@ -16,4 +16,5 @@ jobs:
     # If the environment cannot be found, it will be created
     steps:
       - name: Secret Test
-        run: "The value for DB_PASS is ${{ secrets.DB_PASS }}"
+        # run: "The value for DB_PASS is ${{ secrets.DB_PASS }}"
+        run: "The value for DB_PASS"
