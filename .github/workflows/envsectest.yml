@@ -28,10 +28,12 @@ jobs:
     runs-on: ubuntu-latest
     # An environment can be specified per job
     # If the environment cannot be found, it will be created
+    #Set environment here
     environment: 
       name: DEV
       url: ${{ env.DEV_URL }}
     steps:
+      - run: echo "I am running job in DEV environment"
       - name: Checkout
         uses: actions/checkout@v2
       
@@ -64,6 +66,8 @@ jobs:
       name: PROD
       url: ${{ env.PROD_URL }}
     steps:
+      - run: echo "I am running job in PROD environment"
+
       - name: Checkout
         uses: actions/checkout@v2
       
