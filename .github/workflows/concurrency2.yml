@@ -9,7 +9,7 @@
 
 ###########################################################
 
-name: Concurrency Test
+name: Concurrency Test2
 on:
   #Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -23,7 +23,6 @@ on:
 
 # Concurrency can be used at workflow level or job leve
 concurrency:
-
 # This means concurrency will check against only particular branches
   group: build-and-test-on-pr-${{ github.head_ref }}
   
