@@ -27,5 +27,5 @@ jobs:
       - name: Build and code sim
         run: |
           echo "Starting the code build"
-          sleep 2m
+          sleep 3m
           echo "Finish the code build"
