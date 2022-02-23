@@ -1,28 +1,35 @@
-name: Reuse Workflow
-on:
-  Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# name: Reuse Workflow
+# on:
+#   Triggers the workflow on push or pull request events but only for the master branch
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
 
-  # You can specify input params
-  workflow_call:
-    inputs:
-      image_name:
-        required: true
-        type: string
-    tag:
-      type: string
+#   # You can specify input params
+#   workflow_call:
+#     inputs:
+#       image_name:
+#         required: true
+#         type: string
+#     tag:
+#       type: string
+#   #We want to pass username and password
+#     secrets:
+#       registry_username:
+#         required: true
+#       registry_password:
+#         required: true
 
-jobs:
-  job1:
-    runs-on: ubuntu-latest
-    # An environment can be specified per job
-    # If the environment cannot be found, it will be created
-    environment: 
-      name: DEV
-      url: ${{ env.DEV_URL }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+#     # An environment can be specified per job
+#     # If the environment cannot be found, it will be created
+#     environment: 
+#       name: DEV
+#       url: ${{ env.DEV_URL }}
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
