@@ -1,3 +1,14 @@
+#########################################################
+# Concurrency allows to run 1 cycle at a time
+# If worflow is running, 2nd one will automatically go in pending state if concurrency is enabled
+# If 1st running, 2nd in pending and 3rd is triggered then 2nd which was in pending will be cancelled and 
+# only 3rd (latest) will run
+ 
+  # If this is enabled it will cancel current running and start latest
+  # cancel-in-progress: true
+
+##########################################################
+
 name: Concurrency Test
 on:
   #Triggers the workflow on push or pull request events but only for the master branch
@@ -11,9 +22,11 @@ on:
 
 
 # Concurrency can be used at workflow level or job leve
-
 concurrency:
   group: build-and-test
+  
+  # If this is enabled it will cancel current running and start latest
+  cancel-in-progress: true
 
 
 jobs:
@@ -24,6 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
+# Adding sleep time to keep one running and trigger 2nd to check concurrency
       - name: Build and code sim
         run: |
           echo "Starting the code build"
