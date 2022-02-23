@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Output HeadRef
-        run: echo "${{ github.head_ref }}"
+        run: echo "${{ github.ref }}"
 
       - name: Checkout
         uses: actions/checkout@v2
