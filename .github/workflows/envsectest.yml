@@ -2,6 +2,8 @@
 # Environment secrets take precendence to repository secrets
 # You can have same name secret set up in repo settings under environment and repo secrets
 # If secret set under dev env, and environment used is dev it will use that if u have same name secret in repo secrets
+# We can also have protection rules under each environment, like requiring approval to deploy in prod by certain perople
+# or Fail deploy if target branch is not master or release etc
 ###########################################################
 name: Environments and Secret Test
 on:
