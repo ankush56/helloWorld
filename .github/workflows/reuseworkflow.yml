@@ -15,11 +15,11 @@ on:
         type: string
       tag:
         type: string
-      secrets:
-        registry_username:
-          required: true
-        registry_password:
-          required: true
+      # secrets:
+      #   registry_username:
+      #     required: true
+      #   registry_password:
+      #     required: true
 jobs:
   job1:
     runs-on: ubuntu-latest

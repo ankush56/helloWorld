@@ -21,6 +21,6 @@ jobs:
     with:
       image_name: "alpine"
       tag: v1
-      secrets:
-        registry_username: ${{ secrets.REG_USER }}
-        registry_password: ${{ secrets.REG_PASS }}      
+      # secrets:
+      #   registry_username: ${{ secrets.REG_USER }}
+      #   registry_password: ${{ secrets.REG_PASS }}      
