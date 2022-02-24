@@ -26,6 +26,6 @@ jobs:
     steps:
       - name: Print inputs
         run: |
-          echo ${{ github.event.inputs.image_name }}
-          echo ${{ github.event.inputs.tag }}
+          echo ${{ inputs.image_name }}
+          echo ${{ inputs.tag }}
       
