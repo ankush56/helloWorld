@@ -1,0 +1,28 @@
+###############################################################
+# We are calling reuseworkflow.ymk
+#################################################################
+
+name: Reuse Workflow caller
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    # provide path of workflow, it should be public, in same repo or same org
+    uses: C:\aw\repos\helloWorld\.github\workflows\reuseworkflow.yml@master
+
+    #Inputs and secrets are defined in parent workflow we calling. We provide values here
+    with:
+      image_name: "alpine"
+      tag: v1
+    secrets:
+      registry_username: ${{ secrets.REG_USER }}
+      registry_password: ${{ secrets.REG_PASS }}      

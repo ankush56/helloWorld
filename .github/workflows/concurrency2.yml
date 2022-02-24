@@ -12,10 +12,10 @@
 name: Concurrency Test2
 on:
   #Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,8 +24,8 @@ on:
 # Concurrency can be used at workflow level or job leve
 concurrency:
 # This means concurrency will check against only particular branches
-  # group: build-and-test-on-pr-${{ github.head_ref }}
-  group: build-and-test-on-pr-${{ github.ref }}
+  group: build-and-test-on-pr-${{ github.head_ref }}
+  
   
   # If this is enabled it will cancel current running and start latest
   cancel-in-progress: true
@@ -34,10 +34,14 @@ concurrency:
 jobs:
    build-and-test-on-pr:
     runs-on: ubuntu-latest
-
+    # Concurrency at job level
+    concurrency:
+      group: build-and-test-on-pr-${{ github.head_ref }}
+  
+   
     steps:
       - name: Output HeadRef
-        run: echo "${{ github.ref }}"
+        run: echo "${{ github.head_ref }}"
 
       - name: Checkout
         uses: actions/checkout@v2

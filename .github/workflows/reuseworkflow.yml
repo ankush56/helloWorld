@@ -1,36 +1,31 @@
+#######################################################################
+# This is workflow that will be called by another workflow
+# It should have workflow_call as on event
+# A reusable workflow cannot be called inside another reuseable workflow
+# You cannit inherit variables, you have to explicitly pass them
+# It can contain other triggers aparts from workflow_call
+########################################################################
 name: Reuse Workflow
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  # push:
-  #   branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
-  workflow_dispatch:
-  
-  # You can specify input params
+  # Must have workflow_Call for a reuse workflow
   workflow_call:
     inputs:
       image_name:
         required: true
         type: string
-    tag:
-      type: string
-  #We want to pass username and password
-    secrets:
-      registry_username:
-        required: true
-      registry_password:
-        required: true
-
-
+      tag:
+        type: string
+      secrets:
+        registry_username:
+          required: true
+        registry_password:
+          required: true
 jobs:
   job1:
     runs-on: ubuntu-latest
-    # An environment can be specified per job
-    # If the environment cannot be found, it will be created
-    environment: 
-      name: DEV
-      url: ${{ env.DEV_URL }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Print inputs
+        run: |
+          echo ${{ github.event.inputs.image_name }}
+          echo ${{ github.event.inputs.tag }}
+      
