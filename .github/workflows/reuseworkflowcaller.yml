@@ -12,6 +12,12 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      tag:
+        type: string
 
 jobs:
   build-image:
