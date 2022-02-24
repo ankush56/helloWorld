@@ -15,14 +15,12 @@ on:
 
 jobs:
   build-image:
-    runs-on: ubuntu-latest
     # provide path of workflow, it should be public, in same repo or same org
     uses: ankush56/helloWorld/.github/workflows/reuseworkflow.yml@master
-
     #Inputs and secrets are defined in parent workflow we calling. We provide values here
-    with:
-      image_name: "alpine"
-      tag: v1
-    secrets:
-      registry_username: ${{ secrets.REG_USER }}
-      registry_password: ${{ secrets.REG_PASS }}      
+      # with:
+      #   image_name: "alpine"
+      #   tag: v1
+      # secrets:
+      #   registry_username: ${{ secrets.REG_USER }}
+      #   registry_password: ${{ secrets.REG_PASS }}      
