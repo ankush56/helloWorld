@@ -17,7 +17,7 @@ jobs:
   build-image:
     runs-on: ubuntu-latest
     # provide path of workflow, it should be public, in same repo or same org
-    uses: ankush56/helloWorld/.github/workflows/reuseworkflow.yml
+    uses: ankush56/helloWorld/.github/workflows/reuseworkflow.yml@master
 
     #Inputs and secrets are defined in parent workflow we calling. We provide values here
     with:
