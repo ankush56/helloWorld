@@ -21,13 +21,13 @@ jobs:
       - run: echo "Printing runner OS- ${{ runner.os }}"
       - run: echo "Printing runner workspace path- ${{ runner.workspace }}"
     
-    # There are many other contexts you can use...print all to see or see github docs for each
+    # There are many other contexts you can use.print all to see or see github docs for each
     # This prints all
       - name: "Dump Github Contexts"
         run: echo '${{ toJSON(github) }}'
 
         #individual github contexts values
-        - run: echo "Printing repo - ${{ github.repository }}"
-        - run: echo "Printing repo url - ${{ github.repositoryUrl }}"
-        - run: echo "Printing sha- ${{ github.sha }}"
-        - run: echo "Printing branch- ${{ github.ref }}"
+      - run: echo "Printing repo - ${{ github.repository }}"
+      - run: echo "Printing repo url - ${{ github.repositoryUrl }}"
+      - run: echo "Printing sha- ${{ github.sha }}"
+      - run: echo "Printing branch- ${{ github.ref }}"
