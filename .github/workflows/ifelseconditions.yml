@@ -20,7 +20,7 @@ jobs:
     # If you dont specify name for step, it will show command as name
       - name: "Check condition"
         run: echo "This run on push"   
-      -run: echo "${{ github.event_name }}"
+      - run: echo "${{ github.event_name }}"
 
   JOB2-pull_request:
     runs-on: ubuntu-latest
@@ -29,4 +29,4 @@ jobs:
     # If you dont specify name for step, it will show command as name
       - name: "Check condition"
         run: echo "This run on pull request"   
-      -run: echo "${{ github.event_name }}"
+      - run: echo "${{ github.event_name }}"
