@@ -14,7 +14,10 @@ jobs:
   Dump_Context_to_log:
     runs-on: ubuntu-latest
     steps:
-    # If you dont specify name for step, it will show command as name
+    # This will print all runner contexts, see github docs or print like this to see all and then choose 
       - name: "Dump Runner Context"
         run: echo "${{ toJSON(runner) }}"
+    # You can drill to individual as well
+      - run: echo "${{ runner.os }}"
+      - run: echo "${{ runner.workspace }}"
       
