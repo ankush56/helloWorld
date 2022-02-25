@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # This will print all runner contexts, see github docs or print like this to see all and then choose 
+    ###############################################################################################
+    # RUNNER CONTEXTS
+    ################################################################################################
       - name: "Dump Runner Context"
         run: echo "${{ toJSON(runner) }}"
     # You can drill to individual as well
@@ -23,6 +26,9 @@ jobs:
     
     # There are many other contexts you can use.print all to see or see github docs for each
     # This prints all
+    ###############################################################################################
+    # GITHUB CONTEXTS
+    ################################################################################################
       - name: "Dump Github Contexts"
         run: echo '${{ toJSON(github) }}'
 
@@ -31,3 +37,23 @@ jobs:
       - run: echo "Printing repo url - ${{ github.repositoryUrl }}"
       - run: echo "Printing sha- ${{ github.sha }}"
       - run: echo "Printing branch- ${{ github.ref }}"
+    ###############################################################################################
+    # JOBS CONTEXTS
+    ################################################################################################
+      - name: "Dump Github Contexts"
+        run: echo '${{ toJSON(job) }}'
+    ###############################################################################################
+    # STEPS CONTEXTS
+    ################################################################################################
+      - name: "Dump Github Contexts"
+        run: echo '${{ toJSON(steps) }}'
+    ###############################################################################################
+    # STRATEGY CONTEXTS
+    ################################################################################################
+      - name: "Dump Github Contexts"
+        run: echo '${{ toJSON(strategy) }}'
+    ###############################################################################################
+    # MATRIX CONTEXTS
+    ################################################################################################
+      - name: "Dump Github Contexts"
+        run: echo '${{ toJSON(matrix) }}'
