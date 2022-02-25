@@ -1,0 +1,20 @@
+name: Context test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  Dump_Context_to_log:
+    runs-on: ubuntu-latest
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Dump Runner Context"
+        run: echo "${{ toJSON(runner) }}"
+      
