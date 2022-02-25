@@ -27,8 +27,7 @@ jobs:
         run: echo '${{ toJSON(github) }}'
 
         #individual github contexts values
-        - run: echo "Printing repo - ${{ runner.os }}"
-        - run: echo "Printing repo url - ${{ runner.os }}"
-        - run: echo "Printing sha- ${{ runner.os }}"
-        - run: echo "Printing branch- ${{ runner.os }}"
-        - run: echo "Printing runner OS- ${{ runner.os }}"
+        - run: echo "Printing repo - ${{ github.repository }}"
+        - run: echo "Printing repo url - ${{ github.repositoryUrl }}"
+        - run: echo "Printing sha- ${{ github.sha }}"
+        - run: echo "Printing branch- ${{ github.ref }}"
