@@ -24,4 +24,4 @@ jobs:
     # There are many other contexts you can use...print all to see or see github docs for each
     # This prints all
       - name: "Dump Github Contexts"
-        run: echo ${{ toJSON(github) }}     
+        run: echo '${{ toJSON(github) }}''     
