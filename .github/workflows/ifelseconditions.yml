@@ -22,6 +22,7 @@ jobs:
         run: echo "This run on push"   
       - run: echo "${{ github.event_name }}"
 
+# We pushing here so this wont run and show skipped on github
   JOB2-pull_request:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
