@@ -16,6 +16,7 @@ jobs:
     # If the environment cannot be found, it will be created
     steps:
     # Repository secret
+    # Secret set in UI in repo settings under secrets
       - name: Secret Test
         run: echo "The value for DB_PASS is ${{ secrets.DB_PASS }}"
     # Repository secret in logs

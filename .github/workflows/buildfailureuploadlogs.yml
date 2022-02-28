@@ -1,0 +1,29 @@
+###################################################################
+# You can use runnder context to upload logs in case of failure
+# Here in our src code we have dummy buil script
+# We will make dir on runner under temp and upload log
+##################################################################
+name: Upload logs in case of failures
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build with logs
+        run: |
+          mkdir ${{ runner.temp}}/build_logs
+          ./build.sh --log-path ${{ runner.temp}}/build_logs
+      
+      - name: Upload logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build script logs
+          path: ${{ runner.temp }}/build_logs
+

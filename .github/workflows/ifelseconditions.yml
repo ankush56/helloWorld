@@ -3,10 +3,10 @@ name: IF ELSE Conditions
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-   branches: [ master ]
-  pull_request:
-   branches: [ master ]
+  # push:
+  #  branches: [ master ]
+  # pull_request:
+  #  branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,3 +31,4 @@ jobs:
       - name: "Check condition"
         run: echo "This run on pull request"   
       - run: echo "${{ github.event_name }}"
+  
