@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     # Set this Jobs output in build_id var
     outputs: 
-      output1: $ {{ steps.buildStep.outputs.test1}}
+      output1: $ {{ steps.buildStep.outputs.test1 }}
     steps:
       - uses: actions/checkout@v2
 
