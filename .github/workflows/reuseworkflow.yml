@@ -10,22 +10,19 @@ on:
   # Must have workflow_Call for a reuse workflow
   workflow_call:
     inputs:
-      image_name:
+      build_id:
         required: true
+        type: number
+      deploy_target:
         type: string
-      tag:
-        type: string
-      # secrets:
-      #   registry_username:
-      #     required: true
-      #   registry_password:
-      #     required: true
+        required: true
+
 jobs:
-  job1:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Print inputs
+      - name: Deploy build to target
         run: |
-          echo ${{ inputs.image_name }}
-          echo ${{ inputs.tag }}
+          echo "Deploying to ${{ inputs.build_id }}"
+          echo "Target is ${{ inputs.deploy_target }}"
       

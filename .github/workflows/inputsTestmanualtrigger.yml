@@ -1,0 +1,31 @@
+# Inputs test workflow dispatch manually
+name: Inputs
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log Level'
+        required: false
+        default: 'warning'
+      name:
+        description: 'what is your name'
+        required: false
+        default: 'Superman'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  JOB1_PRINT_INPUTS:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Inputs
+        run: |
+          echo "Log Level- ${{ github.event.inputs.logLevel }}"
+          echo "Hello- ${{ github.event.inputs.name }}"
+        

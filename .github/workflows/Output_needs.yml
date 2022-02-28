@@ -8,12 +8,12 @@
 #  run: echo "::set-output name=url::https://myurl.com"
 ####################################################################
 
-name: needsTest
+name: Output and needs Test
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   workflow_dispatch:
 
