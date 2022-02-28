@@ -26,7 +26,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    # outputs: 
-      #build_id: $ {{ steps.buildStep.outputs.build_id}}
     steps:
-      - run: echo "Output is: ${{ needs.build.outputs.output1 }}"
+      - name: "Print Output"
+        run: echo ${{ needs.build.outputs.output1 }}
