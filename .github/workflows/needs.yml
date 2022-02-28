@@ -27,4 +27,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Print Output"
-        run: echo '${{ needs.build.outputs.output1 }}'
+        run: echo '${{ steps.build.outputs.output1 }}'
