@@ -5,10 +5,10 @@
 ##################################################################
 name: Upload logs in case of failures
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
           mkdir ${{ runner.temp}}/fail_logs
           chmod +x ./failingbuild.sh
           ./failingbuild.sh >> ${{ runner.temp }}/fail_logs/fail.txt
-          
+
       # If checks for failures in last step
       - name: Upload in case of failures
         if: ${{ failure() }}
