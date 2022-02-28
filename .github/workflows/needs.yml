@@ -33,5 +33,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo "The previous job build id is: ${{ needs.build.outputs.output1}}"
+          echo "The previous job build id is: ${{ needs.build.outputs.output1 }}"
       
