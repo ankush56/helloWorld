@@ -25,7 +25,7 @@ jobs:
         run: |
           chmod +x build.sh
           ./build.sh
-          echo "::set-output name=build_id::$BUILD_ID"
+          echo "::set-output name=build_id::1"
 
   deploy:
     needs: build
@@ -37,5 +37,5 @@ jobs:
       - run: |
           chmod +x deploy.sh
 # Deploy script in our code need 1 args
-#          ./deploy.sh --build ${{ needs.build.outputs.build_id }} 
+          ./deploy.sh ${{ needs.build.outputs.build_id }} 
       
