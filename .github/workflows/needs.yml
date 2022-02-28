@@ -37,4 +37,3 @@ jobs:
       - run: |
           echo "The previous job build id is: ${{ needs.build.outputs.output1 }}"
           echo "Avenger is: ${{ needs.build.outputs.selectedAvenger }}"
-      
