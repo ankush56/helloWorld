@@ -20,6 +20,7 @@ jobs:
       matrix:
         maven: [ '3.5.4', '3.6.3', '3.8.2' ]
         java: ['8' , '11', '16']
+        myMatrix: ['Superman', 'Spiderman', 'Hulk']
     steps:
       - name: Setup Maven
         uses: s4u/setup-maven-action@v1.2.1
@@ -28,4 +29,6 @@ jobs:
           maven-version: ${{ matrix.maven }}
       - name: Build with Maven
         run: mvn verify
-
+      
+      - name: Test my matrix
+        run: echo "This is matrix test for ${{ matrix.myMatrix }}"
