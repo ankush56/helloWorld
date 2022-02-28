@@ -35,8 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        chmod +x deploy.sh
+          chmod +x deploy.sh
 # Deploy script in our code need 1 args
-        ./deploy.sh ${{ needs.build.outputs.build_id }} 
+          ./deploy.sh ${{ needs.build.outputs.build_id }} 
       
 
