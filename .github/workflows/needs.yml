@@ -1,5 +1,11 @@
 ####################################################################
 # Use needs to get output from 1 job into current job
+# This sets the var in Output for a job:
+      # outputs:
+      #   url: ${{ steps.step1.outputs.url }} # map step output to job output
+
+# This sets value for that Var
+#  run: echo "::set-output name=url::https://myurl.com"
 ####################################################################
 
 name: needsTest
@@ -16,16 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       url: ${{ steps.step1.outputs.url }} # map step output to job output
+      avenger: ${{ steps.step2.outputs.avenger }}
     steps:
       - id: step1
         name: send url to other job
         run: echo "::set-output name=url::https://myurl.com"
+      - id: step2
+        name: Avenger
+        run: echo "::set-output name=avenger::HULK"
 
   job2:
     runs-on: ubuntu-latest
     needs: job1
     steps:
       - run: echo ${{ needs.job1.outputs.url }} # grab job output here 
+      - run: echo ${{ needs.job1.outputs.avenger }} # grab job output here 
       # - run: user/some-action@v1
       #   with:
       #     url: ${{ needs.job1.outputs.url }} # grab job output here
