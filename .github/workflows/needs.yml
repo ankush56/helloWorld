@@ -27,3 +27,16 @@ jobs:
           ./build.sh
           echo "::set-output name=build_id::$BUILD_ID"
 
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    # outputs: 
+      #build_id: $ {{ steps.buildStep.outputs.build_id}}
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+        chmod +x deploy.sh
+# Deploy script in our code need 1 args
+        ./deploy.sh ${{ needs.build.outputs.build_id }} 
+      
+
