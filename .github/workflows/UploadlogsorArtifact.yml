@@ -22,9 +22,26 @@ jobs:
           chmod +x ./build.sh
           ./build.sh >> ${{ runner.temp}}/build_logs/logs1.txt
       
+
+      - name: Run Script that Fails
+        run: |
+          mkdir ${{ runner.temp}}/fail_logs
+          chmod +x ./failingbuild.sh
+          ./failingbuild.sh --log-path ${{ runner.temp }}/fail_logs/fail.txt
       - name: Upload logs
         uses: actions/upload-artifact@v2
         with:
           name: Build script logs
           path: ${{ runner.temp }}/build_logs
+      
+      # If checks for failures in last step
+      - name: Upload in case of failures
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Failure Logs
+          path: {{ runner.temp }}/fail_logs/fail.txt
+
+    
+
 
