@@ -19,6 +19,7 @@ jobs:
       - name: Build with logs
         run: |
           mkdir ${{ runner.temp}}/build_logs
+          chmod +x ./build.sh
           ./build.sh --log-path ${{ runner.temp}}/build_logs
       
       - name: Upload logs
