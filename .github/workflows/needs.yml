@@ -18,10 +18,9 @@ jobs:
     outputs: 
       output1: $ {{ steps.buildStep.outputs.test1 }}
     steps:
-      - uses: actions/checkout@v2
       - name: building
         id: buildStep
-        run: echo "::set-output name=test1::hello"
+        run: echo "::set-output name=test1::'hello'"
 
   deploy:
     needs: build
