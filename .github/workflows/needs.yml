@@ -12,17 +12,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
     # Set this Jobs output in build_id var
     outputs: 
       output1: $ {{ steps.step1.outputs.test }}
     steps:
       - id: step1
-        run: echo "::set-output name=test::${{ runner.os }}"
+        run: echo "::set-output name=test::hello"
 
-  deploy:
-    needs: build
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ needs.build.outputs.output1 }}'
+      - run: |
+        echo "Printing Outputs"
+        echo ${{ needs.job1.outputs.output1 }}
