@@ -1,0 +1,29 @@
+####################################################################
+# Use needs to get output from 1 job into current job
+####################################################################
+
+name: needsTest
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Set this Jobs output in build_id var
+    outputs: 
+      build_id: $ {{ steps.buildStep.outputs.build_id}}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        id: buildStep
+        run: |
+          chmod +x build.sh
+          ./build.sh
+          echo "::set-output name=build_id::$BUILD_ID"
+

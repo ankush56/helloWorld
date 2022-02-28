@@ -1,14 +1,16 @@
 ####################################################################
 # Build with different version of maven and Java
 # Using Strategy and Matrix
+# It will create 1 job with each matrix and its combinations
+# Here we had total 9 cases(3 in each matrix, maven, java & mymatrix, it created total 27 jobs)
 ####################################################################
 
 name: StrategyMatrix
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   workflow_dispatch:
 
