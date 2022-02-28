@@ -26,5 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo "Printing Outputs"
-        echo ${{ needs.job1.outputs.output1 }}
+          echo "Printing Outputs"
+          echo ${{ needs.job1.outputs.output1 }}
