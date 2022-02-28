@@ -20,11 +20,11 @@ jobs:
     steps:
       - name: building
         id: buildStep
-        run: echo "::set-output name=test1::'hello'"
+        run: echo "::set-output name=HELLO::"
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: "Print Output"
-        run: echo ${{ needs.build.outputs.output1 }}
+        run: echo '${{ needs.build.outputs.output1 }}'
