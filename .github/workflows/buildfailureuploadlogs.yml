@@ -20,7 +20,7 @@ jobs:
         run: |
           mkdir ${{ runner.temp}}/build_logs
           chmod +x ./build.sh
-          ./build.sh --log-path ${{ runner.temp}}/build_logs
+          ./build.sh >> ${{ runner.temp}}/build_logs/logs1.txt
       
       - name: Upload logs
         uses: actions/upload-artifact@v2
