@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: building
         id: buildStep
-        run: echo "::set-output name=HELLO::"
+        run: echo "::set-output name=test1::HELLO"
 
   deploy:
     needs: build
