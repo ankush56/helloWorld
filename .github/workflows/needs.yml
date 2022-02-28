@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
+      - name: build
         id: buildStep
         run: |
           chmod +x build.sh
@@ -28,8 +28,8 @@ jobs:
           echo "::set-output name=build_id::$BUILD_ID"
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     # outputs: 
       #build_id: $ {{ steps.buildStep.outputs.build_id}}
     steps:
