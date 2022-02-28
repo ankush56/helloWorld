@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Failure Logs
-          path: {{ runner.temp }}/fail_logs/fail.txt
+          path: ${{ runner.temp }}/fail_logs/fail.txt
 
     
 
