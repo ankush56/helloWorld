@@ -16,15 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     # Set this Jobs output in build_id var
     outputs: 
-      output1: $ {{ steps.buildStep.outputs.test1 }}
+      output1: $ {{ steps.step1.outputs.test }}
     steps:
-      - name: building
-        id: buildStep
-        run: echo "::set-output name=test1::${{ runner.os }}"
+      - id: step1
+        run: echo "::set-output name=test::${{ runner.os }}"
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: "Print Output"
-        run: echo '${{ steps.build.outputs.output1 }}'
+      - run: echo '${{ needs.build.outputs.output1 }}'
