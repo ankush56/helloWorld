@@ -17,15 +17,11 @@ jobs:
     # Set this Jobs output in build_id var
     outputs: 
       output1: $ {{ steps.buildStep.outputs.test1 }}
-      selectedAvenger: $ {{ steps.buildStep.outputs.avenger }}
     steps:
       - uses: actions/checkout@v2
-
-      - name: build
+      - name: building
         id: buildStep
-        run: |
-          echo "::set-output name=test1::hello"
-          echo "::set-output name=avenger::HULK"
+        run: echo "::set-output name=test1::hello"
 
   deploy:
     needs: build
@@ -33,7 +29,4 @@ jobs:
     # outputs: 
       #build_id: $ {{ steps.buildStep.outputs.build_id}}
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          echo "The previous job build id is: ${{ needs.build.outputs.output1 }}"
-          echo "Avenger is: ${{ needs.build.outputs.selectedAvenger }}"
+      - run: echo "Output is: ${{ needs.build.outputs.output1 }}"
