@@ -16,16 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     # Set this Jobs output in build_id var
     outputs: 
-      build_id: $ {{ steps.buildStep.outputs.build_id}}
+      output1: $ {{ steps.buildStep.outputs.test1}}
     steps:
       - uses: actions/checkout@v2
 
       - name: build
         id: buildStep
         run: |
-          chmod +x build.sh
-          ./build.sh
-          echo "::set-output name=build_id::$BUILD_ID"
+          echo "::set-output name=test1::hello"
 
   deploy:
     needs: build
@@ -35,5 +33,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo "The previous job build id is: ${{ needs.build.outputs.build_id}}"
+          echo "The previous job build id is: ${{ needs.build.outputs.output1}}"
       
