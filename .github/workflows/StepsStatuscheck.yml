@@ -14,10 +14,10 @@ name: Steps STatus Test
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-   branches: [ master ]
-  pull_request:
-   branches: [ master ]
+  # push:
+  #  branches: [ master ]
+  # pull_request:
+  #  branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,6 +32,14 @@ jobs:
       - name: "Check condition"
         run: echo "This run on push"   
       - run: echo "${{ github.event_name }}"
+      - name: "SOme Job1 failing step"
+        run: bla bla bla
+      - name: "Check failing job"
+        if: ${{ job.status == 'failure' }}
+        run: echo "Job is failing"
+      - name: "This will always Run"
+        if: ${{ always() }}
+        run: echo "This will Always run success or failure"
   JOB2-pull_request:
     runs-on: ubuntu-latest
     steps:
@@ -45,8 +53,10 @@ jobs:
         if: ${{ failure() }}
         run: echo "Previous job has failed"
       - name: "Check Previous Steps success"
-        if: ${{ success() }}
+        if: ${{ success() }}    # Runs only if previous step was success
         run: echo "Previous job was a success"
       - name: "This will always Run"
         if: ${{ always() }}
         run: echo "This will Always run success or failure"
+####################################################################################################3
+# Use composite way better
