@@ -1,8 +1,15 @@
 ####################################################################
 # Returns True when none of previous steps have failed or cancelled
+# if: ${{ success() }}
+
+# This will always run
+# if: ${{ always() }}
+
+#This checks for previous job's failure
+# if: ${{ failure() }}
 ####################################################################
 
-name: ConditionsTest
+name: Steps STatus Test
 
 # Controls when the workflow will run
 on:
@@ -40,3 +47,6 @@ jobs:
       - name: "Check Previous Steps success"
         if: ${{ success() }}
         run: echo "Previous job was a success"
+      - name: "This will always Run"
+        if: ${{ always() }}
+        run: echo "This will Always run success or failure"
