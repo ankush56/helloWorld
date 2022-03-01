@@ -34,7 +34,7 @@ jobs:
         run: echo "World"      
       - name: "Some Failing Step"
         run: fail fail fail
-      - name: "Check Previous Steps success failure"
+      - name: "Check Previous Steps failure"
         if: ${{ failure() }}
         run: echo "Previous job has failed"
       - name: "Check Previous Steps success"
