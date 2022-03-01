@@ -39,15 +39,15 @@ jobs:
       - run: echo "${{ github.event_name }}"
       - name: "SOme Job1 failing step"
         run: bla bla bla
-      - name: "Check failing job"
-        if: ${{ job.status == 'failure' }}
-        run: echo "Job is failing"
       - name: "This will always Run"
         if: ${{ always() }}
         run: echo "This will Always run success or failure"
   JOB2-pull_request:
     runs-on: ubuntu-latest
     steps:
+      - name: "Check previous failing job"
+        if: ${{ job.status == 'failure' }}
+        run: echo " Previous Job is failing"
       - name: "Run some steps"
         run: echo "hello"
       - name: "Run More steps"
