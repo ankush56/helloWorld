@@ -24,13 +24,15 @@ jobs:
     # If you dont specify name for step, it will show command as name
       - name: "Check condition"
         run: echo "This run on push"   
-        -run:blabla
-
       - run: echo "${{ github.event_name }}"
   JOB2-pull_request:
     runs-on: ubuntu-latest
     steps:
-      - name: "Check Previous Job success"
+      - name: "Run some steps"
+        run: echo "hello"
+      - name: "Run More steps"
+        run: echo "World"      
+      - name: "Check Previous Steps success"
         if: ${{ success() }}
         run: echo "Previous job was a success"
   
