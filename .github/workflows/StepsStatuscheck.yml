@@ -42,6 +42,8 @@ jobs:
       - name: "This will always Run"
         if: ${{ always() }}
         run: echo "This will Always run success or failure"
+      - name: "Status"
+        run: echo ${{ job.status }}
   JOB2-pull_request:
     runs-on: ubuntu-latest
     steps:
