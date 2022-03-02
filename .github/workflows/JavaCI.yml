@@ -28,4 +28,4 @@ jobs:
       - name: Publish Artifact Package
         run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
         env:
-          GITHUB_TOKEN: {{ github.token }}
+          GITHUB_TOKEN: {{ secrets.GITHUB_TOKEN }}
