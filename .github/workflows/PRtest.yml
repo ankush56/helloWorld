@@ -9,7 +9,7 @@ on:
       - reopened
       - ready_for_review
     branches:
-      - main
+      - master
       - release*
 
 jobs:
