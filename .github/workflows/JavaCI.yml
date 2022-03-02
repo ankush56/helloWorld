@@ -1,18 +1,21 @@
-# Java CI
-name: Java CI
-
+name: JavaCI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-   branches: [ master, release* ]
+    branches: [ master ]
   pull_request:
-   branches: [ master, release* ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
+    # An environment can be specified per job
+    # If the environment cannot be found, it will be created
     steps:
-      run: echo "hello test"
+    # Repository secret
+    # Secret set in UI in repo settings under secrets
+      - name: Secret Test
+        run: echo "helo"
