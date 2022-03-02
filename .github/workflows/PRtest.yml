@@ -1,0 +1,22 @@
+#######################################################################
+# 
+########################################################################
+name: PRs Test
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+    branches:
+      - main
+      - release*
+
+jobs:
+  JOB1-RunScripts:
+    runs-on: ubuntu-latest
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Say Hello step"
+        run: echo "Hello Action"
+    
