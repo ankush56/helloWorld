@@ -12,10 +12,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # An environment can be specified per job
-    # If the environment cannot be found, it will be created
     steps:
-    # Repository secret
-    # Secret set in UI in repo settings under secrets
-      - name: 
-        run: echo "helo"
+      - uses: actions/checkout@v2  #checkout code
+
+      - name: Setup JDK11 # setup jdk
+        uses: actions/setup-java@v2
+        with: 
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
