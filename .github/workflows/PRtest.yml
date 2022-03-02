@@ -13,10 +13,9 @@ on:
       - release*
 
 jobs:
-  JOB1-RunScripts:
+  PR_BUILD:
     runs-on: ubuntu-latest
     steps:
     # If you dont specify name for step, it will show command as name
-      - name: "Say Hello step"
-        run: echo "Hello Action"
-    
+      - name: "Run Build"
+        run: echo "Build in Action"
