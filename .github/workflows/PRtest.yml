@@ -1,5 +1,7 @@
 #######################################################################
-# 
+#  This worlflow will run when PR is opened, reopened or readyreview
+# It will only trigger for PRs in master and release branches
+# release1, release2, release/r1 etc
 ########################################################################
 name: PRs Test
 on:
