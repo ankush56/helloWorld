@@ -26,6 +26,11 @@ jobs:
         run: mvn -B package --file pom.xml
       
       - name: Publish Artifact Package
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-        env:
+        uses:  actions/upload-artifact@v2
+        with:
+          name: helloworld 
+          path: ./target/*.jar
+
+
+        with:
           GITHUB_TOKEN: ${{ github.token }}
