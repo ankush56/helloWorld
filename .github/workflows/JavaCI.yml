@@ -25,12 +25,8 @@ jobs:
       - name: Build with Maven   #MVN build package
         run: mvn -B package --file pom.xml
       
-      - name: Publish Artifact Package
+      - name: Publish Artifact Package to github
         uses:  actions/upload-artifact@v2
         with:
           name: helloworld 
           path: ./target/*.jar
-
-
-        with:
-          GITHUB_TOKEN: ${{ github.token }}
