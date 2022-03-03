@@ -1,0 +1,23 @@
+#######################################################################
+#  This worlflow will run when PR is opened, reopened or readyreview
+# It will only trigger for PRs in master and release branches
+# release1, release2, release/r1 etc
+########################################################################
+name: PRs Test
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+    branches:
+      - master
+      - release*
+
+jobs:
+  PR_BUILD:
+    runs-on: ubuntu-latest
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Run Build"
+        run: echo "Build in Action"

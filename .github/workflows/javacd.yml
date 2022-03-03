@@ -1,0 +1,54 @@
+name: Java CD
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ feature/*, release/*, master ]
+  pull_request:
+    branches: [ $default-branch  ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: heju
+  JAVA_VERSION: '11'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2  #checkout code
+
+      - name: Setup JDK11 # setup jdk
+        uses: actions/setup-java@v2
+        with: 
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: maven
+      
+      - name: Build with Maven   #MVN build package
+        run: mvn clean install
+      
+      - name: Publish Artifact Package to github
+        uses:  actions/upload-artifact@v2
+        with:
+          name: helloworld 
+          path: '${{ github.workspace }}/target/*.jar'
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: 
+      name: 'DEVELOPMENT'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    steps:
+      - name: Download Artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: helloworld
+      - name:  Deploying to Azure web app
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} 
+          package: '*.jar'
