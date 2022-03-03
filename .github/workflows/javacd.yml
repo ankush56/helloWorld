@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: hellojava
+  AZURE_WEBAPP_NAME: heju
   JAVA_VERSION: '11'
 jobs:
   build:
