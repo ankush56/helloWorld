@@ -1,3 +1,8 @@
+#You can use the jobs.<job_id>.if conditional to prevent a job from running unless a condition is met. 
+#When you use expressions in an if conditional, 
+#you may omit the expression syntax (${{ }}) because GitHub automatically evaluates 
+#You can use the jobs.<job_id>.if conditional to prevent a job from running unless a condition is met. You can use any supported context and expression to create a conditional.
+# When you use expressions in an if conditional, you may omit the expression syntax (${{ }}) because GitHub automatically evaluates the if conditional as an expression. the if conditional as an expression. 
 name: IF ELSE Conditions
 
 # Controls when the workflow will run
@@ -31,4 +36,18 @@ jobs:
       - name: "Check condition"
         run: echo "This run on pull request"   
       - run: echo "${{ github.event_name }}"
+  
+  job3:
+    runs-on: ubuntu-latest
+    # if statement without  ${{ }} as if keyword evaluates itself
+    if: runner.os == 'ubuntu-latest'
+    steps:
+      run: echo "This will run if runner os is ubuntu latest"
+
+  job4:
+    runs-on: windows-latest
+    # if statement without  ${{ }} as if keyword evaluates itself
+    if: runner.os == 'ubuntu-latest'
+    steps:
+      run: echo "This wont run"
   
