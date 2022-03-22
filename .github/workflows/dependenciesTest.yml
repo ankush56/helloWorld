@@ -35,4 +35,15 @@ jobs:
     needs: [job2, job3]
     steps:
       - run : echo "This will run after job2 and job3 have finished"
+
+  job6:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [job2, job3]
+    steps:
+      - run : echo "This will always run after job2 and job3 regardless they are successful or not"  
+  
+  
+  
+
   
