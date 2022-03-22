@@ -40,14 +40,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     # if statement without  ${{ }} as if keyword evaluates itself
-    if: runner.os == 'ubuntu-latest'
+    if:  github.repository == "paplu"
     steps:
-      - run: echo "This will run if runner os is ubuntu latest"
-
-  job4:
-    runs-on: windows-latest
-    # if statement without  ${{ }} as if keyword evaluates itself
-    if: runner.os == 'ubuntu-latest'
-    steps:
-      - run: echo "This wont run"
+      - run: echo "This wont run
   
