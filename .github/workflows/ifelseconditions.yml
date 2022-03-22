@@ -38,9 +38,9 @@ jobs:
       - run: echo "${{ github.event_name }}"
   
   job3:
-    runs-on: ubuntu-latest
     # if statement without  ${{ }} as if keyword evaluates itself
-    if:  github.repository == "paplu"
+    if:  github.repository == 'paplu'
+    runs-on: ubuntu-latest
     steps:
       - run: echo "This wont run
   
