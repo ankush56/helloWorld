@@ -49,5 +49,5 @@ jobs:
     # if statement without  ${{ }} as if keyword evaluates itself
     if: runner.os == 'ubuntu-latest'
     steps:
-      run: echo "This wont run"
+      - run: echo "This wont run"
   
