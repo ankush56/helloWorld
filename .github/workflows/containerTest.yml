@@ -5,7 +5,7 @@ name: Container Test
 # When you only specify a container image, you can omit the image keyword.
 #If you do not set a container, all steps will run directly on the host specified by runs-on unless a step refers to an action configured to run in a container.
 on:
-  Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for the master branch
   push:
    branches: [ master ]
   pull_request:
