@@ -6,6 +6,9 @@
 # For example, your workflow might need to run integration tests that require access to a database and memory cache.
 # You can use the services keyword to create service containers that are part of a job in your workflow. For more information, see jobs.<job_id>.services.
 
+
+#If your job runs in a Docker container, you do not need to map ports on the host or the service container. If your job runs directly on the runner machine,
+#you'll need to map any required service container ports to ports on the host runner machine.
 #######################################################################
 name: Service Containers
 
@@ -23,13 +26,13 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-    container: node:10.18-jessie
-
-    
     services:
     # label to access service container
       redis:
         image: redis
+        ports:
+        # open tcp port 6379 on the host and service container
+          - 6379:6379
     steps:
     # If you dont specify name for step, it will show command as name
       - name: "Say Hello step"
