@@ -34,13 +34,13 @@ jobs:
   node-docker-JOB2:
     runs-on: ubuntu-latest
     container:
-      image: node:14.15.0-alpine3.12
+      image: maven
       ports:
         - 3001:3000 # expose the container port
     steps:
     # If you dont specify name for step, it will show command as name
       - name: "Step1"
-        run: http://localhost:3001/api/users
+        run: mvn -version
 
 
 
