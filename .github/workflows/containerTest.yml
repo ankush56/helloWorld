@@ -3,6 +3,7 @@ name: Container Test
 # Use jobs.<job_id>.container to create a container to run any steps in a job that don't already specify a container. 
 # If you have steps that use both script and container actions, the container actions will run as sibling containers on the same network with the same volume mounts.
 # When you only specify a container image, you can omit the image keyword.
+# Can only be run on ubuntu machines
 #If you do not set a container, all steps will run directly on the host specified by runs-on unless a step refers to an action configured to run in a container.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
@@ -24,3 +25,22 @@ jobs:
     # If you dont specify name for step, it will show command as name
       - name: "Step1"
         run: echo "Hello Step1"
+      
+      - name: Log the node version
+        run: |
+          node -v
+          cat /etc/os-release
+
+  node-docker-JOB2:
+    runs-on: ubuntu-latest
+    container:
+      image: node:14.15.0-alpine3.12
+      ports:
+        - 3001:3000 # expose the container port
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Step1"
+        run: http://localhost:3001/api/users
+
+
+
