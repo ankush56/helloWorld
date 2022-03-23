@@ -1,0 +1,36 @@
+######################################################################
+#You can use service containers to 
+#connect databases, web services, memory caches, and other tools to your workflow.
+#GitHub creates a fresh Docker container for each service configured in the workflow, and destroys the service container when the job completes. 
+#Steps in a job can communicate with all service containers that are part of the same job.
+# For example, your workflow might need to run integration tests that require access to a database and memory cache.
+# You can use the services keyword to create service containers that are part of a job in your workflow. For more information, see jobs.<job_id>.services.
+
+#######################################################################
+name: Service Containers
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+   branches: [ master ]
+  pull_request:
+   branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: node:10.18-jessie
+
+    
+    services:
+    # label to access service container
+      redis:
+        image: redis
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Say Hello step"
+        run: echo "Service container test"
