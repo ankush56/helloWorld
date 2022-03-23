@@ -30,3 +30,4 @@ jobs:
     steps:
     # If you dont specify name for step, it will show command as name
       - name: "Say Hello step"
+        run: echo "This wont run as we add skip ci in commit messsage"
