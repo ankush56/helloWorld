@@ -23,7 +23,7 @@ jobs:
       - name: "Step1"
         run: echo "Hello Step1"
   job2:
-   container: node:14.16
+    container: node:14.16
     steps:
     # If you dont specify name for step, it will show command as name
       - name: "Say Hello step"
