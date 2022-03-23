@@ -7,10 +7,10 @@ name: Container Test
 #If you do not set a container, all steps will run directly on the host specified by runs-on unless a step refers to an action configured to run in a container.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-   branches: [ master ]
-  pull_request:
-   branches: [ master ]
+  # push:
+  #  branches: [ master ]
+  # pull_request:
+  #  branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
           node -v
           cat /etc/os-release
 
-  node-docker-JOB2:
+  java-docker-JOB2:
     runs-on: ubuntu-latest
     container:
       image: maven
@@ -42,5 +42,22 @@ jobs:
       - name: "Step1"
         run: mvn -version
 
+  node-docker-JOB3:
+  # Define creds for docker registry
+    runs-on: ubuntu-latest
+    container:
+      image: maven
+
+      #If registry needs creds provide as below
+      # It same as u would do to docker login
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
+      ports:
+        - 3001:3000 # expose the container port
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Step1"
+        run: mvn -version
 
 
