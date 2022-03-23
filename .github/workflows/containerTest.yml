@@ -17,6 +17,12 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   job1:
+    runs-on: ubuntu-latest
+    steps:
+    # If you dont specify name for step, it will show command as name
+      - name: "Step1"
+        run: echo "Hello Step1"
+  job2:
    container: node:14.16
     steps:
     # If you dont specify name for step, it will show command as name
