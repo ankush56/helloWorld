@@ -9,6 +9,9 @@
 # Must run on Linux self hosted or ubuntu-latest on github hosted
 #If your job runs in a Docker container, you do not need to map ports on the host or the service container. If your job runs directly on the runner machine,
 #you'll need to map any required service container ports to ports on the host runner machine.
+
+# Configuring jobs to run in a container simplifies networking configurations between the job and the service containers. Docker containers on the same user-defined bridge network expose all ports to each other, so you don't need to map any of the service container ports to the Docker host. 
+# You can access the service container from the job container using the label you configure in the workflow.
 #######################################################################
 name: Service Containers
 
@@ -26,6 +29,7 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
+    # You can run this job in container as well as that simplifies netowrking with service container
     services:
     # label to access service container
       redis:

@@ -1,0 +1,63 @@
+######################################################################
+#You can use service containers to 
+#connect databases, web services, memory caches, and other tools to your workflow.
+#GitHub creates a fresh Docker container for each service configured in the workflow, and destroys the service container when the job completes. 
+#Steps in a job can communicate with all service containers that are part of the same job.
+# For example, your workflow might need to run integration tests that require access to a database and memory cache.
+# You can use the services keyword to create service containers that are part of a job in your workflow. For more information, see jobs.<job_id>.services.
+
+# Must run on Linux self hosted or ubuntu-latest on github hosted
+#If your job runs in a Docker container, you do not need to map ports on the host or the service container. If your job runs directly on the runner machine,
+#you'll need to map any required service container ports to ports on the host runner machine.
+
+# You have to use - ports: and map ports under service container if job is not run in container
+#######################################################################
+name: PostGres Service Containers
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+   branches: [ master ]
+  pull_request:
+   branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  runs-on: ubuntu-latest
+  container-job1:
+    container: node:10.18-jessie
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      
+      - name: install dependencies
+        run: npm ci
+      
+      - name: Connect to Postgres
+        # Runs a script that creates a Redis client, populates
+        # the client with data, and retrieves data
+        run: node client.js
+        # Environment variable used by the `client.js` script to create a new Redis client.
+        # The client.js script looks for the REDIS_HOST and REDIS_PORT environment variables to create the client. 
+        # The workflow sets those two environment variables as part of the "Connect to Redis" step to make them available to the client.js script.
+        env:
+          # The hostname used to communicate with the Redis service container
+          REDIS_HOST: redis
+
+    
+        
