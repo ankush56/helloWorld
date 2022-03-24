@@ -9,15 +9,17 @@
 # Must run on Linux self hosted or ubuntu-latest on github hosted
 #If your job runs in a Docker container, you do not need to map ports on the host or the service container. If your job runs directly on the runner machine,
 #you'll need to map any required service container ports to ports on the host runner machine.
+
+# You have to use - ports: and map ports under service container if job is not run in container
 #######################################################################
 name: Redis Service Containers
 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-   branches: [ master ]
-  pull_request:
-   branches: [ master ]
+  # push:
+  #  branches: [ master ]
+  # pull_request:
+  #  branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
