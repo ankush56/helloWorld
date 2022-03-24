@@ -1,0 +1,22 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "![example workflow](https://github.com/ankush56/helloWorld/actions/workflows/statusBadge.yml/badge.svg)\r ![example workflow](https://github.com/ankush56/helloWorld/actions/workflows/javacd.yml/badge.svg)",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankush56/helloWorld.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankush56/helloWorld/issues"
+  },
+  "homepage": "https://github.com/ankush56/helloWorld#readme",
+  "dependencies": {
+    "redis": "^4.0.4"
+  }
+}
