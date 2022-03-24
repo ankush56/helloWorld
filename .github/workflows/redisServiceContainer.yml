@@ -46,6 +46,8 @@ jobs:
         # the client with data, and retrieves data
         run: node client.js
         # Environment variable used by the `client.js` script to create a new Redis client.
+        # The client.js script looks for the REDIS_HOST and REDIS_PORT environment variables to create the client. 
+        # The workflow sets those two environment variables as part of the "Connect to Redis" step to make them available to the client.js script.
         env:
           # The hostname used to communicate with the Redis service container
           REDIS_HOST: redis
