@@ -10,14 +10,14 @@
 #If your job runs in a Docker container, you do not need to map ports on the host or the service container. If your job runs directly on the runner machine,
 #you'll need to map any required service container ports to ports on the host runner machine.
 #######################################################################
-name: Service Containers
+name: Redis Service Containers
 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  # push:
-  #  branches: [ master ]
-  # pull_request:
-  #  branches: [ master ]
+  push:
+   branches: [ master ]
+  pull_request:
+   branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,14 +26,21 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
+    container: node:10.18-jessie
     services:
     # label to access service container
       redis:
         image: redis
-        ports:
-        # open tcp port 6379 on the host and service container
-          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-    # If you dont specify name for step, it will show command as name
-      - name: "Say Hello step"
-        run: echo "Service container test"
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+      
