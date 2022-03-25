@@ -20,7 +20,9 @@ jobs:
 
     steps:
     - name: Print Job starting message
-      run: echo "Starting cron job at ${{ date }}"
+      run: |
+        echo "Starting cron job at "
+        date
 
     # - name: Create team sync issue
     #   uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
