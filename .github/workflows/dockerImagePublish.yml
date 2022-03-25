@@ -4,10 +4,10 @@ name: Docker publish
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-   branches: [ master ]
-  pull_request:
-   branches: [ master ]
+  # push:
+  #  branches: [ master ]
+  # pull_request:
+  #  branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
+    
       - name: Login to Github Container Registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -40,6 +40,7 @@ jobs:
         with:
           images: ankushwalia/greet
 
+# This step build and push image to docker hub as well as github container registry
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
