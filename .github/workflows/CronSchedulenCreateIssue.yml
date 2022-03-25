@@ -14,6 +14,33 @@ on:
 jobs:
   create_issue:
     runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+
     steps:
     - name: Print Job starting message
       run: echo "Starting cron job at ${{ date }}"
+
+    - name: Create team sync issue
+      uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+      with:
+        assignees: "ankush56"
+        labels: "weekly sync, docs-team"
+        title: "Team sync"
+        body: |
+            ### Agenda
+
+            - [ ] Start the recording
+            - [ ] Check-ins
+            - [ ] Discussion points
+            - [ ] Post the recording
+                    
+            ### Discussion Points
+            Add things to discuss below
+
+            - [Work this week](https://github.com/orgs/github/projects/3)
+        pinned: false
+        close-previous: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
