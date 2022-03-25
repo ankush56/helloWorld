@@ -1,8 +1,8 @@
 name: Create Issue
 
-# Controls when the workflow will run
+# Controls when the workflow will run 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the  workflow on push or pull request events but only for the master branch
   schedule:
   # Runs every 2 mins
     - cron: 1 * * * *
@@ -10,7 +10,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more  jobs that can run sequentially or in parallel
 jobs:
   create_issue:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
 
     # - name: Create team sync issue
     #   uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
-    #   with:
+    #   with: 
     #     assignees: "ankush56"
     #     labels: "weekly sync, docs-team"
     #     title: "Team sync"
