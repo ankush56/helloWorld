@@ -12,6 +12,6 @@ jobs:
       - id: foo
         uses: actions/aw-action@v1
         with:
-          person: "Spideman"
+          person: "Spiderman"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
