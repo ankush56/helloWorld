@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: foo
-        uses: aw-action/Hello Action Metadata@master
+        uses: aw-action/Hello Action Metadata@main
         with:
           person: "Spiderman"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
