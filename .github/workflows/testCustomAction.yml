@@ -11,9 +11,12 @@ jobs:
     steps:
       - name: Custom Hello world action Step
         id: hello
-        uses: actions/createGithubActions@v1
+        uses: actions/hello-world-docker-action1@v1
         with:
          who-to-greet: 'Superman'
+         repository: ankush56/createGithubActions
+         ref: refs/tags/v1
+         token: ${{ secrets.GITHUB_TOKEN }}
       - name: Get Output Time
         run: echo "Time is ${{ steps.hello.outputs.time }}"
           
