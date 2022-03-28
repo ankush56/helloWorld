@@ -6,18 +6,12 @@ on: [push]
 # A workflow run is made up of one or more  jobs that can run sequentially or in parallel
 jobs:
   job1:
-    name: Call Custom Hello world action
+    name: Test Custom Hello world action in aw-action repo
     runs-on: ubuntu-latest
     steps:
-      - name: Custom Hello world action Step
-        id: hello
-        uses: actions/hello-world-docker-action1@v1
+      - id: foo
+        uses: actions/aw-action@v1
         with:
-         who-to-greet: 'Superman'
-         repository: ankush56/createGithubActions
-         ref: refs/tags/v1
-         token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get Output Time
-        run: echo "Time is ${{ steps.hello.outputs.time }}"
-          
-
+          person: "Spideman"
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
