@@ -1,0 +1,20 @@
+name: Test Custom Action
+
+# Controls when the workflow will run 
+on: [push]
+
+# A workflow run is made up of one or more  jobs that can run sequentially or in parallel
+jobs:
+  job1:
+    name: Call Custom Hello world action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Custom Hello world action Step
+        id: hello
+        uses: actions/createGithubActions@v1
+        with:
+         who-to-greet: 'Superman'
+      - name: Get Output Time
+        run: echo "Time is ${{ steps.hello.outputs.time }}"
+          
+
